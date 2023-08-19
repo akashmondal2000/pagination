@@ -2,6 +2,8 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
 
+// https://medium.com/how-to-react/create-pagination-in-react-js-using-react-hooks-c3c582ff5a96
+
 const App = () => {
 
   const [offset,setOffset] = useState(0);
@@ -22,7 +24,19 @@ const App = () => {
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage))
     })
+  }
 
+
+  useEffect(()=>{
+    getData();
+  },[offset])
+
+  // Now let's create a method to handle our page click.
+
+  // The method is just updating our offset state by adding 1 on each click using setOffset method.
+  const handlePageClick = (e)=>{
+    const seclectedPage = e.seclected;
+    setOffset(seclectedPage +1);
   }
   return (
     <div className="App">
