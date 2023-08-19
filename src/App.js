@@ -3,7 +3,7 @@ import axios from 'axios'
 import ReactPaginate from 'react-paginate';
 import './App.css'
 
-function App() {
+const App=()=> {
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
